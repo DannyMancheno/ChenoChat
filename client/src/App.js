@@ -1,30 +1,20 @@
-// App.js
-//
-import React, { Component } from 'react';
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      flower: {}
-    }
-    this.getFlower();
-  }
-  getFlower() {
-    fetch('/flower')
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          flower: data
+
+import react, {useEffect, useState} from 'react';
+
+export default function App() {
+    let [flower, updateFlower] = useState([{}]);
+    useEffect(()=>{
+        fetch('/flower').then( response => response.json()).then(data =>{
+            updateFlower(data)
         });
-      });
-  }
-  render() {
+    }, [])
     return (
-      <div className="App">
-        <h1>{this.state.flower.name}</h1>
-        <p>{this.state.flower.colour}</p>
-      </div>
-    );
-  }
+        <div className='appContainer'>
+            {(typeof flower === undefined) ? (
+                <p>Loading</p>
+            ) : (
+                <p key={flower}>{flower.name}</p>
+            )}
+        </div>
+    )
 }
-export default App;
