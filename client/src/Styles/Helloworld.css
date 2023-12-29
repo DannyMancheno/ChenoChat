@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+}
+
+.HelloWorld {
+  background: rgb(127, 104, 104);
+  margin: auto;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  padding: 20px;
+  border-radius: 10px;
+}
+.HelloWorld * {
+  padding: 10px;
+}
+.HelloWorld h1 {
+  background: rgb(43, 28, 28);
+  color: white;
+}
+.HelloWorld p {
+  background: rgb(255, 255, 255);
+}/*# sourceMappingURL=Helloworld.css.map */

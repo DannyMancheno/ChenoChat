@@ -1,5 +1,8 @@
 
 import react, {useEffect, useState} from 'react';
+import './Styles/App.css';
+import HelloWorld from './Components/HelloWorld';
+
 
 export default function App() {
     let [flower, updateFlower] = useState([{}]);
@@ -10,10 +13,11 @@ export default function App() {
     }, [])
     return (
         <div className='appContainer'>
+            <HelloWorld />
             {(typeof flower === undefined) ? (
                 <p>Loading</p>
             ) : (
-                <p key={flower}>{flower.name}</p>
+                <p key={flower} className='dataP'>Data Retrieved from API : {flower.name}</p>
             )}
         </div>
     )
