@@ -4,9 +4,11 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon --quiet --exec babl-node server.js --ignore client",
+   
+    "start": "nodemon --quiet --exec babel-node server.js --ignore client",
     "startClient": "npm start --prefix client",
     "concStart": "concurrently \"npm run start\" \"npm run startClient\"",
+    
     "build": "babel server.js --out-file server.compiled.js",
     "buildClient": "npm run build --prefix client",
     "concBuild": "concurrently \"npm run build\" \"npm run buildClient\""

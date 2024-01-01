@@ -1,0 +1,8 @@
+* {
+  color: black;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}/*# sourceMappingURL=Login.css.map */

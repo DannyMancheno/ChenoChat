@@ -1,0 +1,49 @@
+
+.splashscreen-container{ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    *{
+        margin-bottom: 15px;
+    }
+    img{
+        width: 42%;
+    }
+    h1{
+        font-size: 34px;
+    }
+    .splash-enter{
+        height: 44px;
+        width: 80px;
+        text-decoration: none;
+        color: #084C7E;
+        background: #00AEEF;
+        border: solid 3px #084C7E;
+        border-radius:50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:hover{
+            animation: splash-enter-button-hover .35s forwards;
+        }
+    }
+    @keyframes splash-enter-button-hover{
+        from{
+            color: #084C7E;
+            background: #00AEEF;
+            border: solid 3px #084C7E;
+            border-radius: 50px;
+            transform: scale(1);
+            width: 80px;
+        }
+        to{
+            color: #2480c2;
+            background: #12c0ff;
+            width: 100px;
+            border: solid 3px #0a66a7;
+            border-radius: 10px;
+            transform: scale(1.1);
+        }
+        
+    }
+}
