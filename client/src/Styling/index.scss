@@ -5,44 +5,24 @@
 }
 
 html{
-    color: white;
-    background: rgb(221, 221, 221);
-    padding: 10px;
-    height: 100vh;
-}
-.appContainer{
-    padding: 20px;
+    color: black;
+    background: linear-gradient(rgb(136, 90, 242) 75%, rgb(77, 51, 138));
+    background-repeat:no-repeat;
+    height: 100%;
     width: 100%;
-    max-width: 1200px;
-    height: 75vh;
-    background: white;
-    margin: auto;
-    border-radius: 10px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.2);
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
 }
-.app-info{ 
-    margin-top: 50px;
-    color: grey;
-    div{
-        text-align: center;
-        margin-top: 10px;
-    }
+
+
+.appBackgroundSVG{
+    // height: 100%;
+    // width: 100%;
+    width: 500px;
 }
-.splashScreen-button{
-    margin-top: 30px;
-    height: 45px;
-    width: 115px;
-    font-size: 26px;
-    border-radius: 10px;
-    border: none;
-    background-color: rgb(89, 123, 123);
-    color: white;
-    cursor: pointer;
-    &:hover{
-        
-    }
+#path1{
+    fill: red;
+    height: 300px;
+    width: 300px;
 }

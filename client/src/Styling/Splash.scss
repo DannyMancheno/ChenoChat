@@ -1,49 +1,35 @@
-
-.splashscreen-container{ 
+.splashscreen-container{
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    *{
-        margin-bottom: 15px;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    .splash-logo{
+        opacity: 1;
+        width: 120px; 
     }
-    img{
-        width: 42%;
-    }
-    h1{
-        font-size: 34px;
+    .splash-text{
+        margin: 55px auto;
+        .splash-title{
+            font-size: 60px;
+            color: black;
+        }      
+        .splash-description{
+            color: rgb(250, 155, 59);
+            text-align: center;
+        }
     }
     .splash-enter{
-        height: 44px;
-        width: 80px;
+        color: rgb(250, 155, 59);
+        padding: 10px 40px;
+        background: rgb(55, 55, 55);
+        // background: rgb(102, 102, 102);
+        border: solid 2px rgb(55, 55, 55);
+        border: solid 2px rgb(102, 102, 102);
+        border-radius: 30px;
         text-decoration: none;
-        color: #084C7E;
-        background: #00AEEF;
-        border: solid 3px #084C7E;
-        border-radius:50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        &:hover{
-            animation: splash-enter-button-hover .35s forwards;
-        }
     }
-    @keyframes splash-enter-button-hover{
-        from{
-            color: #084C7E;
-            background: #00AEEF;
-            border: solid 3px #084C7E;
-            border-radius: 50px;
-            transform: scale(1);
-            width: 80px;
-        }
-        to{
-            color: #2480c2;
-            background: #12c0ff;
-            width: 100px;
-            border: solid 3px #0a66a7;
-            border-radius: 10px;
-            transform: scale(1.1);
-        }
-        
-    }
+    
 }

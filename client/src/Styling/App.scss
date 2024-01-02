@@ -1,0 +1,28 @@
+
+.app-container{
+
+}
+.app-background{
+    z-index: 0;
+    #splash-background-path1{
+        fill: rgba(96, 63, 175, 0.3);
+        
+    }
+    #splash-background-path2{
+        fill: rgb(77, 51, 138, 0.3);
+        
+    } 
+}
+
+.app-info-container{
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    margin-bottom: 35px;
+    opacity: 0.6;
+    *{
+        margin-bottom: 3px;
+    }
+}
