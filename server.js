@@ -7,7 +7,7 @@ app.use(express.static(path.join(__dirname, 'client', 'build')));
 
 const PORT = process.env.HTTP_PORT || 4001;
 
-const appVersion = '0.0.4'
+const appVersion = '0.0.5'
 
 // Base Server API _____________________________________
 

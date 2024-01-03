@@ -1,4 +1,4 @@
-.splashscreen-container {
+.splash-container {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -7,27 +7,67 @@
   align-items: center;
   z-index: 2;
 }
-.splashscreen-container .splash-logo {
+.splash-container .splash-logo {
   opacity: 1;
   width: 120px;
+  height: 120px;
 }
-.splashscreen-container .splash-text {
+.splash-container .splash-text {
   margin: 55px auto;
 }
-.splashscreen-container .splash-text .splash-title {
+.splash-container .splash-text .splash-title {
   font-size: 60px;
   color: black;
 }
-.splashscreen-container .splash-text .splash-description {
+.splash-container .splash-text .splash-description {
   color: rgb(250, 155, 59);
   text-align: center;
 }
-.splashscreen-container .splash-enter {
-  color: rgb(250, 155, 59);
-  padding: 10px 40px;
-  background: rgb(55, 55, 55);
-  border: solid 2px rgb(55, 55, 55);
+.splash-container .splash-enter {
+  color: rgb(255, 150, 46);
+  background: rgb(68, 68, 68);
   border: solid 2px rgb(102, 102, 102);
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+  padding: 10px 40px;
   border-radius: 30px;
   text-decoration: none;
+}
+.splash-container .splash-enter:hover {
+  animation: hovered-splash-enter 0.4s forwards ease-out;
+}
+@keyframes hovered-splash-enter {
+  from {
+    color: rgb(255, 150, 46);
+    background: rgb(82, 82, 82);
+    border: solid 2px rgb(102, 102, 102);
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+  }
+  to {
+    color: rgb(255, 173, 92);
+    background: rgb(91, 91, 91);
+    border: solid 2px rgb(120, 120, 120);
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+@keyframes splash-logo-intro {
+  from {
+    opacity: 0;
+    width: 50px;
+    height: 50px;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    width: 120px;
+    height: 120px;
+    transform: translateY(0px);
+  }
+}
+@keyframes splash-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }/*# sourceMappingURL=Splash.css.map */

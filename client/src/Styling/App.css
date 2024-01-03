@@ -1,15 +1,10 @@
-.app-background {
-  z-index: 0;
+.app-container .app-routing-elements {
+  position: relative;
+  z-index: 1;
 }
-.app-background #splash-background-path1 {
-  fill: rgba(96, 63, 175, 0.3);
-}
-.app-background #splash-background-path2 {
-  fill: rgba(77, 51, 138, 0.3);
-}
-
-.app-info-container {
+.app-container .app-info-container {
   position: fixed;
+  z-index: 1;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -17,6 +12,32 @@
   margin-bottom: 35px;
   opacity: 0.6;
 }
-.app-info-container * {
+.app-container .app-info-container * {
   margin-bottom: 3px;
+}
+@keyframes animateReveal {
+  from {
+    pointer-events: none;
+    opacity: 0;
+  }
+  to {
+    pointer-events: initial;
+    opacity: 1;
+  }
+}
+@keyframes animatePath1 {
+  from {
+    transform: translate(-200%, -300%);
+  }
+  to {
+    transform: translate(-120%, -300%);
+  }
+}
+@keyframes animatePath2 {
+  from {
+    transform: translate(-360%, -400%);
+  }
+  to {
+    transform: translate(-400%, -400%);
+  }
 }/*# sourceMappingURL=App.css.map */

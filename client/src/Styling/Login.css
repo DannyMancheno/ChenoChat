@@ -2,8 +2,12 @@
   color: black;
 }
 
+.login-container {
+  z-index: 2;
+  position: relative;
+}
+
 .login-form {
-  z-index: 4;
   display: flex;
   flex-direction: column;
 }/*# sourceMappingURL=Login.css.map */

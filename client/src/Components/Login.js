@@ -3,7 +3,7 @@ import '../Styling/Login.css';
 
 export default function Login(){    
     return (
-        <>
+        <div className='login-container'>
             <h1>ChenoChat</h1>
             <p>
                 Login to 
@@ -14,6 +14,6 @@ export default function Login(){
                 Password
                 <input></input>
             </form>
-        </>
+        </div>
     )
 }

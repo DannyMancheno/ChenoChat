@@ -5,7 +5,7 @@ var express = require('express');
 var app = express();
 app.use(express["static"](path.join(__dirname, 'client', 'build')));
 var PORT = process.env.HTTP_PORT || 4001;
-var appVersion = '0.0.4';
+var appVersion = '0.0.5';
 
 // Base Server API _____________________________________
 
