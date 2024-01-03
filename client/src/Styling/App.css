@@ -1,3 +1,7 @@
+:root {
+  --path1-gradient: linear-gradient() ;
+}
+
 .app-container .app-routing-elements {
   position: relative;
   z-index: 1;
