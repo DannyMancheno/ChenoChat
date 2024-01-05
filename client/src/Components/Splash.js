@@ -9,7 +9,6 @@ export default function SplashBackground(props){
 
     let IDElement = x =>{ return document.getElementById(x)};
 
-
     useEffect(()=>{
         let logoTime = 1.5;
         if(props.useIntro){
@@ -17,6 +16,7 @@ export default function SplashBackground(props){
             IDElement('id-splash-title').style.animation = `splash-reveal 1s ${logoTime}s forwards`
             IDElement('id-splash-description').style.animation = `splash-reveal 1s ${logoTime * 1.15}s forwards`
             IDElement('id-splash-enter').style.animation = `splash-reveal 1s ${logoTime * 1.3}s forwards`
+            IDElement('id-splash-app-info').style.animation = `splash-reveal 1s ${logoTime * 1.4}s forwards`
         }
     }, [props.useIntro])
 
@@ -53,6 +53,26 @@ export default function SplashBackground(props){
             >
                 Enter
             </Link>
+            <div className='app-info-container'
+                id='id-splash-app-info'
+                style={{
+                    opacity: (props.useIntro) ? 0 : 1}
+                }
+            >
+                <div className='app-copyright'>
+                    &copy; ChenoChat
+                </div>
+                <div className='app-contact'>
+                    contact@dannymancheno.me
+                </div>
+                <div className='app-version'>
+                    App version {
+                        (typeof props.appVersion === undefined) ? 
+                        ( 'Fetching' ) :
+                        ( `${props.appVersion}`)
+                    }
+                </div>
+            </div>
         </div>
     )
 }

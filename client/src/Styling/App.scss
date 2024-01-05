@@ -4,12 +4,12 @@
 
 .app-container{
     .app-routing-elements{
+        display: block;
         position: relative;
+        margin: auto;
         z-index: 1;
+        max-width: 500px;
     }
-    .app-background{
-    }
-    
     .app-info-container{
         position: fixed;
         z-index: 1;

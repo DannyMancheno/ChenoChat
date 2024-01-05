@@ -1,7 +1,3 @@
-
-import '../Styling/Login.css';
-
-
 export default function NotFound(){    
     return (
         <>

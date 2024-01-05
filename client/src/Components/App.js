@@ -6,6 +6,9 @@ import '../Styling/App.css';
 import Splash from './Splash';
 import Login from './Login';
 import NotFound from './NotFound';
+import Register from './Register';
+import Arrow from'./Subcomponent/ReturnLink';
+import { Translate } from 'aws-sdk';
 
 export default function App() {
     
@@ -74,25 +77,11 @@ export default function App() {
             </svg> 
             <div className='app-routing-elements'> 
                 <Routes>
-                    <Route path='/' element={<Splash useIntro={useIntro}/>} />
+                    <Route path='/' element={<Splash useIntro={useIntro} appVersion={appVersion}/>} />
                     <Route path='/Login' element={<Login />}/>
+                    <Route path='/Register' element={<Register />} />
                     <Route path='*' element={<NotFound />}/>
                 </Routes>
-            </div>
-            <div className='app-info-container'>
-                <div className='app-copyright'>
-                    &copy; ChenoChat
-                </div>
-                <div className='app-contact'>
-                    contact@dannymancheno.me
-                </div>
-                <div className='app-version'>
-                    App version {
-                        (typeof appVersion === undefined) ? 
-                        ( 'Fetching' ) :
-                        ( `${appVersion}`)
-                    }
-                </div>
             </div>
         </div>
     )

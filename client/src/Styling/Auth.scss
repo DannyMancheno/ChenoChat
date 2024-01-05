@@ -1,0 +1,144 @@
+// CSS styling for either Login/Register/Security
+
+
+.auth-form{
+    display: block;
+    background: rgba(45, 45, 45, 0.75);
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 5px 8px rgba(0,0,0,0.2);
+    position: relative;
+    margin: 10px;
+    z-index: 2;
+    
+    .auth-title, .auth-description{
+        text-align: center;
+    }
+    .auth-title{
+        margin-bottom: 8px;
+    }
+    .auth-description{
+        margin-bottom: 20px;
+        box-sizing: border-box;
+    }
+    .auth-logo{
+        width: 44px;
+        display: block;
+        margin: auto;
+    }
+    .auth-title{
+        color: white;
+        font-size: 38px;
+        font-weight: bolder;
+    }
+    .auth-description{
+        color: rgb(196, 196, 196);
+     
+    }
+    .auth-type{
+        color: orange;
+        font-size: 24px;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+    
+    fieldset{
+        color: orange;
+        border-radius: 20px;
+        border-color: grey;
+        background-color: rgba(67, 67, 67, 0.85);
+        margin-bottom: 20px;
+        input, .auth-select{
+            width: 100%;
+            padding: 5px 8px;
+            border-radius: 10px;
+            border: none;
+        }
+    }
+    .auth-submit{
+        display: flex;
+        align-items: end;
+        button{
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            color: orange;
+            background: rgba(65, 65, 65, 1);
+            border: solid 2px rgba(85, 85, 85);
+            font-size: 18px;
+            margin-left: auto;
+            cursor: pointer;
+        }
+    }
+}
+
+// Registration Specific Styling
+.security-question-divider{
+    border-bottom: dotted 2px rgba(255, 255, 255, 0.15);
+    margin: 0px 10px 10px 10px;
+}
+
+.auth-register-button, .auth-login-button{
+    &:hover{
+        animation: hovered-auth-submit-button 0.3s forwards;
+    }
+    @keyframes hovered-auth-submit-button{
+        from{
+            color: orange;
+            background: rgba(45,45,45);
+            transform: scale(1);
+        }
+        to{
+            color: rgb(255, 186, 57);
+            background: rgba(60,60,60);
+            transform: scale(1.04);
+        }
+    }
+}
+
+.return-link{
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    padding: 10px;
+    border-radius: 20px;
+    svg{
+        width: 100%;
+        height: 100%;
+        path{
+            transform: scale(0.2);
+            fill: rgba(255,255,255,0.4);
+        }
+        &:hover{
+            path{
+                animation: animateReturnLinkHover .5s forwards
+            }
+        }
+        @keyframes animateReturnLinkHover{
+            from{
+                fill: rgba(255,255,255,0.4);
+            }
+            to{
+                fill: rgb(255, 255, 255, 1);
+            }
+        }
+    }
+}
+
+// Login Specific Styling
+#login-auth-form{
+    .login-other-links{
+        a{
+            color: rgb(196, 196, 196);
+            margin-right: 20px;
+            text-decoration: none;
+            &:last-child{
+                padding-left: 20px;
+                border-left: solid 2px rgb(146, 146, 146);;
+            }
+        }
+        a:hover{
+            color: rgb(216, 216, 216);
+        }
+    }
+}
