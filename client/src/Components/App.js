@@ -11,7 +11,7 @@ import Arrow from'./Subcomponent/ReturnLink';
 import { Translate } from 'aws-sdk';
 
 export default function App() {
-    
+
     let IDElement = x => {document.getElementById(x)}
 
     let [appVersion, updateAppVersion] = useState([{}]);
@@ -31,6 +31,7 @@ export default function App() {
             sessionStorage.setItem('ChenoChatIntro', false)
         }
     }, [])
+
 
     return (
         <div className='app-container'>

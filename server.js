@@ -2,12 +2,13 @@
 const path = require('path');
 const express = require('express');
 const app = express();
-// var mysql = require('mysql');
+const mysql = require('mysql');
+// const test = require('oweirjwer');
 
 
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 
-const PORT = process.env.HTTP_PORT || 4001;
+const PORT = process.env.HTTP_PORT || 8081;
 
 const appVersion = '0.0.5'
 

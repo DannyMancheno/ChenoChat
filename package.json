@@ -9,7 +9,8 @@
     "concStart": "concurrently \"npm run start\" \"npm run startClient\"",
     "build": "babel server.js --out-file server.compiled.js",
     "buildClient": "npm run build --prefix client",
-    "concBuild": "concurrently \"npm run build\" \"npm run buildClient\""
+    "concBuild": "concurrently \"npm run build\" \"npm run buildClient\"",
+    "EBDeployStage": "npm run concBuild && git add . && eb deploy --staged && eb open && echo 'Built, Staged and Deployed to EB' "
   },
   "keywords": [],
   "author": "",
@@ -20,12 +21,12 @@
     "@babel/node": "^7.22.19",
     "@babel/preset-env": "^7.23.6",
     "@types/jquery": "^3.5.29",
-    "mysql": "^2.18.1",
     "nodemon": "^3.0.2"
   },
   "dependencies": {
     "concurrently": "^8.2.2",
     "cors": "^2.8.5",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mysql": "^2.18.1"
   }
 }
