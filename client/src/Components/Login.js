@@ -32,24 +32,14 @@ export default function Login(){
                 <legend align='left'>Password</legend>
                 <input></input>
             </fieldset>
-            <div className='security-question-divider'></div>
+            
             <div className='auth-submit'>
                 <div className='login-other-links'>
-                    <Link to={'/security'} replace >Forgot Password</Link>
-                    <Link to={'/Register'} replace>Register</Link>
+                    <Link to={'/ForgotPass'}>Forgot Pass</Link>
+                    <Link to={'/Register'}>Register</Link>
                 </div>
                 <button className='auth-login-button'>Login</button>
             </div>
         </div>
     )
 }
-        // <div className='login-container'>
-        //     <h1>Login to ChenoChat</h1>
-        //     <form className='login-form'>
-        //         Username
-        //         <input></input>
-        //         Password
-        //         <input></input>
-        //     </form>
-        //     <Link to='/Register' replace>Register</Link>
-        // </div>

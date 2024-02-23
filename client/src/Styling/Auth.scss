@@ -10,7 +10,9 @@
     position: relative;
     margin: 10px;
     z-index: 2;
-    
+    *{
+        background: rgba(0,0,0,0) !important;
+    }
     .auth-title, .auth-description{
         text-align: center;
     }
@@ -20,6 +22,7 @@
     .auth-description{
         margin-bottom: 20px;
         box-sizing: border-box;
+        
     }
     .auth-logo{
         width: 44px;
@@ -46,36 +49,83 @@
         color: orange;
         border-radius: 20px;
         border-color: grey;
-        background-color: rgba(67, 67, 67, 0.85);
-        margin-bottom: 20px;
+        
+        margin-bottom: 10px;
         input, .auth-select{
             width: 100%;
             padding: 5px 8px;
-            border-radius: 10px;
+            border-radius: 7px;
             border: none;
+            color: white;
+            &:-webkit-autofill, &:-webkit-autofill:focus{
+                transition: background-color 0s 600000s, color 0s 600000s !important;
+            }
+            &:focus{
+                outline: none;
+                &::placeholder{
+                    color: rgb(219, 219, 219);
+                }
+            }
+            &:hover::placeholder{
+                color: rgba(219, 219, 219);
+            }
         }
+        .auth-select > option{
+            padding: 10px;
+            background: #3b3b3b !important;
+        }
+        input[type='date']{
+            color-scheme: dark;
+        }
+        input[type='date']::-webkit-calendar-picker-indicator{
+            position: absolute;
+            right: 34px;
+            color-scheme: dark;
+        }
+        
     }
     .auth-submit{
         display: flex;
-        align-items: end;
+        flex-direction: column;
+
+        #auth-register-recaptcha{
+            opacity: 0.92;
+            margin: 10px auto;
+            
+            // border-radius: 20px;
+            iframe{
+                border: solid 1px grey;
+                border-radius: 20px;
+            }
+        }
+        .login-other-links{
+            display: grid;
+            grid-template-columns: 150px 150px;
+            text-align: center;
+        }
         button{
-            padding: 12px 24px;
+            padding: 12px;
+            width: 100%;
             border: none;
             border-radius: 10px;
             color: orange;
-            background: rgba(65, 65, 65, 1);
             border: solid 2px rgba(85, 85, 85);
             font-size: 18px;
-            margin-left: auto;
             cursor: pointer;
         }
     }
 }
 
-// Registration Specific Styling
+// ########################################################################################################
+// ################################## Registration ########################################################
+// ########################################################################################################
+// 
 .security-question-divider{
     border-bottom: dotted 2px rgba(255, 255, 255, 0.15);
-    margin: 0px 10px 10px 10px;
+    margin: 0px 10px 0px 10px;
+}
+.auth-register-form{
+    background: red;
 }
 
 .auth-register-button, .auth-login-button{
@@ -91,11 +141,10 @@
         to{
             color: rgb(255, 186, 57);
             background: rgba(60,60,60);
-            transform: scale(1.04);
+            transform: scale(1.02);
         }
     }
 }
-
 .return-link{
     position: absolute;
     width: 70px;
@@ -125,7 +174,10 @@
     }
 }
 
-// Login Specific Styling
+// ########################################################################################################
+// ################################## Login ###############################################################
+// ########################################################################################################
+ 
 #login-auth-form{
     .login-other-links{
         a{

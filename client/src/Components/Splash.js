@@ -33,7 +33,7 @@ export default function SplashBackground(props){
                     id='id-splash-title'
                     style={{opacity: (props.useIntro) ? 0 : 1}}
                 > 
-                    ChenoChat 2
+                    ChenoChat
                 </h1>
                 <p 
                     className='splash-description'

@@ -9,6 +9,7 @@ import NotFound from './NotFound';
 import Register from './Register';
 import Arrow from'./Subcomponent/ReturnLink';
 import { Translate } from 'aws-sdk';
+import ForgotPass from './ForgotPass';
 
 export default function App() {
 
@@ -81,6 +82,7 @@ export default function App() {
                     <Route path='/' element={<Splash useIntro={useIntro} appVersion={appVersion}/>} />
                     <Route path='/Login' element={<Login />}/>
                     <Route path='/Register' element={<Register />} />
+                    <Route path='/ForgotPass' element={<ForgotPass/>} />
                     <Route path='*' element={<NotFound />}/>
                 </Routes>
             </div>
