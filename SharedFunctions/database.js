@@ -146,7 +146,7 @@ function queryParser(queryObject){
                 }
             }
             else{
-                console.log('Invalid query WHERE value')
+                console.log('Invalid query WHERE value');
             }
         }
         else{
@@ -173,7 +173,7 @@ function queryParser(queryObject){
             }
         }
         else{
-            console.log('Invalid query WHERE value')
+            console.log('Invalid query WHERE value');
         }
         queryString = `DELETE FROM ChenoChat.${queryObject.table} WHERE ${conditionString}`
     }
@@ -181,7 +181,8 @@ function queryParser(queryObject){
 }
 
 
-export function queryDB(query){
+// export function queryDB(query){
+function queryDB(query){
     // Somewhere in the API a queryObject is made and passed here
     // This function's query database is either should be either a string or an object
     //      If the query is a 
@@ -216,4 +217,8 @@ export function queryDB(query){
             })
         }
     })
+}
+
+module.exports={
+    queryDB
 }

@@ -1,10 +1,6 @@
 // Authentication
 
 export function requestAPI(method, url, data = {}, successfulStatus){
-    
-    console.log(`______________________________`)
-    console.log(data);
-
     return new Promise((resolve, reject)=>{
         let request = new XMLHttpRequest();
 

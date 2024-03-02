@@ -4,7 +4,8 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jwt-simple');
 const jwtaccesskey = 'EWmfUcl65KU1BnmCpXyyORdCd0rU9PAZ'
 const mysql = require('mysql');
-import { queryDB } from '../SharedFunctions/database';
+// import { queryDB } from '../SharedFunctions/database';
+const {queryDB} = require('../SharedFunctions/database')
 
 
 const router = express.Router();
@@ -25,51 +26,62 @@ let DELETE = 'DELETE';
 router.get('/login', (req, res)=>{
     res.send({response: 'login reached'});
 })
+router.post('/checkUsername', (req, res)=>{
+    queryDB({
+        statement: 'SELECT',
+        table: 'UserAccount', 
+        condition: {username: req.body.username}
+    }).then(result=>{
+        if(result.length) res.status(201).send(`Username is already in use`)
+    })
+})
 
 router.post('/register', (req, res)=>{
     let data = req.body;
-    // res.status(401).send('API /register ERROR MESSAGE');
-    res.status(201).send('API /register SUCCESS MESSAGE');
-    // if(data.recaptcha){
-    //     const secretKey = '6Lc0b3MpAAAAAKpLa29yE1s0BmPHo4o8vD5QyoDR';
-    //     const userResponse = data.recaptcha
-    //     const url = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${userResponse}`;
-    //     fetch(url, {method: 'post'}).then((response)=>response.json()).then((google_response)=>{
-    //         if(google_response.success){
-    //             //Server side data validation
-    //             var dataValid = true;
-    //             if(data.username === '' || data.password === '' || data.confirm === '' ||
-    //                data.birthday === '' || data.securityQ === ''||data.securityA === ''|| 
-    //                /[^a-zA-Z0-9]+/.test(data.username) || 
-    //                data.password !== data.confirm
-    //             )  dataValid = false;
-    //             // If no tests failed, proceed to submit data to registration
-    //             if(dataValid){
-    //                 // Check if username exists already
-    //                 queryDB({
-    //                     statement: 'SELECT',
-    //                     table: 'UserAccount', 
-    //                     condition: {username: data.username}
-    //                 }).then(result=>{
-    //                     if(result.length) res.status(401).send('Account already in use');
-    //                     else{
-    //                         // Remove uneeded datacheckers for DB insert
-    //                         delete data.confirm;
-    //                         delete data.recaptcha;
-    //                         queryDB({
-    //                             statement: INSERT,
-    //                             table: 'UserAccount',
-    //                             data: data,
-    //                         })
-    //                         .then(result => res.status(201).send('Account successfully created'))
-    //                         .catch(error => res.status(401).send('Failed to create account'))  
-    //                     }
-    //                 }).catch(error => res.status(401).send('Database account registry check failed'));
-    //             }
-    //             else res.status(401).send('Registration data failed server check');
-    //         }
-    //     })
-    // }
+    if(data.recaptcha){
+        const secretKey = '6Lc0b3MpAAAAAKpLa29yE1s0BmPHo4o8vD5QyoDR';
+        const userResponse = data.recaptcha
+        const url = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${userResponse}`;
+        fetch(url, {method: 'post'}).then((response)=>response.json()).then((google_response)=>{
+            if(google_response.success){
+                //Server side data validation
+                var dataValid = true;
+                if(data.username === '' || data.password === '' || data.confirm === '' ||
+                   data.birthday === '' || data.securityQ === ''||data.securityA === ''|| 
+                   /[^a-zA-Z0-9]+/.test(data.username) || 
+                   data.password !== data.confirm
+                )  dataValid = false;
+                // If no tests failed, proceed to submit data to registration
+                if(dataValid){
+                    // Check if username exists already
+                    queryDB({
+                        statement: 'SELECT',
+                        table: 'UserAccount', 
+                        condition: {username: data.username}
+                    }).then(result=>{
+                        if(result.length) res.status(401).send('Darn, username is already in use :C');
+                        else{
+                            // Remove uneeded datacheckers for DB insert
+                            delete data.confirm;
+                            delete data.recaptcha;
+                            queryDB({
+                                statement: INSERT,
+                                table: 'UserAccount',
+                                data: {
+                                    ...data,
+                                    password: bcrypt.hashSync(data.password, 10),
+                                    securityA: bcrypt.hashSync(data.securityA, 10)
+                                }
+                            })
+                            .then(result => res.status(201).send('Awesome, you created an account!'))
+                            .catch(error => res.status(401).send('Oh oh, something wrong happened!'))  
+                        }
+                    }).catch(error => res.status(401).send('Database account registry check failed'));
+                }
+                else res.status(401).send('Registration data failed server check');
+            }
+        })
+    }
 })
 
 module.exports = router;
