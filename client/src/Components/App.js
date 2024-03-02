@@ -12,7 +12,6 @@ import { Translate } from 'aws-sdk';
 import ForgotPass from './ForgotPass';
 
 export default function App() {
-
     let IDElement = x => {document.getElementById(x)}
 
     let [appVersion, updateAppVersion] = useState([{}]);

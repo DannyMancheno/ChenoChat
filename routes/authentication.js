@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jwt-simple');
 const jwtaccesskey = 'EWmfUcl65KU1BnmCpXyyORdCd0rU9PAZ'
 const mysql = require('mysql');
+import { queryDB } from '../SharedFunctions/database';
 
 
 const router = express.Router();
@@ -13,15 +14,11 @@ router.use(bodyParser.urlencoded({
     extended: true
 }));
 
-// ########## DATABASE CONNECTION ##########################################################################################################
-// #########################################################################################################################################
-var connection = mysql.createConnection({
-    host: 'awseb-e-y9giweg2ci-stack-awsebrdsdatabase-znskistgmgix.cqdvk67uu8ru.us-east-2.rds.amazonaws.com',
-    user: 'ChenoChatRoot',
-    password: 'dvm1181997CHENOCHATDB',
-    port: '3306'
-})
-
+// Predefined values
+let SELECT = 'SELECT'; 
+let INSERT = 'INSERT';
+let UPDATE = 'UPDATE';
+let DELETE = 'DELETE';
 // ########## ROUTES #######################################################################################################################
 // #########################################################################################################################################
 
@@ -31,40 +28,48 @@ router.get('/login', (req, res)=>{
 
 router.post('/register', (req, res)=>{
     let data = req.body;
-    if(data.recaptcha){
-        const secretKey = '6Lc0b3MpAAAAAKpLa29yE1s0BmPHo4o8vD5QyoDR';
-        const userResponse = data.recaptcha
-        const url = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${userResponse}`;
-        fetch(url, {method: 'post'}).then((response)=>response.json()).then((google_response)=>{
-            if(google_response.success){
-                //Server side data validation
-                var dataValid = true;
-                // If data value is empty , deny
-                if(data.username == '' || data.password == '' || data.confirm == '' || data.birthday == '' || data.securityQ == '' || data.securityA == '') dataValid = false;
-                // If username regex is true , deny
-                if(/[^a-zA-Z0-9]+/.test(data.username)) dataValid = false;
-                // If password/confirm don't match , deny
-                if(data.password !== data.confirm) dataValid = false;
-                // If no tests failed, proceed to submit data to registration
-                if(dataValid){
-                    connection.query(
-                        `INSERT INTO ChenoChat.UserAccount (username, password, birthday, securityQ, securityA) VALUE
-                        (
-                            '${data.username}', 
-                            '${bcrypt.hashSync(data.password, 10)}',
-                            '${data.birthday}',
-                            '${data.securityQ}',
-                            '${bcrypt.hashSync(data.securityA, 10)}'
-                        )`, (err, result)=>{
-                            if(err) res.send({success: false, message: 'Failed to register account - Error A0001'});
-                            else res.send({success: true, message: 'Successfully registered an account!'});
-                        }
-                    )
-                }
-                else res.send({success: false, message: 'Registration data was invalid - Error A0002'});
-            }
-        })
-    }
+    // res.status(401).send('API /register ERROR MESSAGE');
+    res.status(201).send('API /register SUCCESS MESSAGE');
+    // if(data.recaptcha){
+    //     const secretKey = '6Lc0b3MpAAAAAKpLa29yE1s0BmPHo4o8vD5QyoDR';
+    //     const userResponse = data.recaptcha
+    //     const url = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${userResponse}`;
+    //     fetch(url, {method: 'post'}).then((response)=>response.json()).then((google_response)=>{
+    //         if(google_response.success){
+    //             //Server side data validation
+    //             var dataValid = true;
+    //             if(data.username === '' || data.password === '' || data.confirm === '' ||
+    //                data.birthday === '' || data.securityQ === ''||data.securityA === ''|| 
+    //                /[^a-zA-Z0-9]+/.test(data.username) || 
+    //                data.password !== data.confirm
+    //             )  dataValid = false;
+    //             // If no tests failed, proceed to submit data to registration
+    //             if(dataValid){
+    //                 // Check if username exists already
+    //                 queryDB({
+    //                     statement: 'SELECT',
+    //                     table: 'UserAccount', 
+    //                     condition: {username: data.username}
+    //                 }).then(result=>{
+    //                     if(result.length) res.status(401).send('Account already in use');
+    //                     else{
+    //                         // Remove uneeded datacheckers for DB insert
+    //                         delete data.confirm;
+    //                         delete data.recaptcha;
+    //                         queryDB({
+    //                             statement: INSERT,
+    //                             table: 'UserAccount',
+    //                             data: data,
+    //                         })
+    //                         .then(result => res.status(201).send('Account successfully created'))
+    //                         .catch(error => res.status(401).send('Failed to create account'))  
+    //                     }
+    //                 }).catch(error => res.status(401).send('Database account registry check failed'));
+    //             }
+    //             else res.status(401).send('Registration data failed server check');
+    //         }
+    //     })
+    // }
 })
 
 module.exports = router;

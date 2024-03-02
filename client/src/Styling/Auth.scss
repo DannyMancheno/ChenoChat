@@ -102,6 +102,8 @@
             display: grid;
             grid-template-columns: 150px 150px;
             text-align: center;
+            justify-content: center;
+            margin-bottom: 10px;
         }
         button{
             padding: 12px;
@@ -114,8 +116,48 @@
             cursor: pointer;
         }
     }
+    .auth-result{
+        margin: 100px 0px;
+        .auth-result-image{
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            svg{
+                width: 40px;
+                height: 40px;
+                fill: white;
+            }
+        }
+        .auth-result-message{
+            text-align: center;
+            color: white;
+        }
+    }
 }
+@keyframes fadeContainer{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+@keyframes revealContainer{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+@keyframes shrinkContainer{
+    from{
 
+    }
+    to{
+        height: 0px;
+    }
+}
 // ########################################################################################################
 // ################################## Registration ########################################################
 // ########################################################################################################

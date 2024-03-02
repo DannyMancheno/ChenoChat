@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.2572cf30.css",
-    "main.js": "/static/js/main.014fb120.js",
+    "main.css": "/static/css/main.7ac398b5.css",
+    "main.js": "/static/js/main.42102c5b.js",
     "static/media/ChenoChatIcon.svg": "/static/media/ChenoChatIcon.305809072e701035bf34f46c7cbff84b.svg",
     "index.html": "/index.html",
-    "main.2572cf30.css.map": "/static/css/main.2572cf30.css.map",
-    "main.014fb120.js.map": "/static/js/main.014fb120.js.map"
+    "main.7ac398b5.css.map": "/static/css/main.7ac398b5.css.map",
+    "main.42102c5b.js.map": "/static/js/main.42102c5b.js.map"
   },
   "entrypoints": [
-    "static/css/main.2572cf30.css",
-    "static/js/main.014fb120.js"
+    "static/css/main.7ac398b5.css",
+    "static/js/main.42102c5b.js"
   ]
 }
