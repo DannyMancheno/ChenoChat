@@ -4,12 +4,23 @@ const mysql = require('mysql');
 
 // ########## DATABASE CONNECTION ##########################################################################################################
 // #########################################################################################################################################
+// Database can be found at 
+// https://www.freesqldatabase.com/account/
+// Info can be found
+// Host: 127.0.0.1
+// Database name: ChenoCHat
+// Database user: root
+// Database password: dvm1181997ChenoChat2024!
+// Port number: 3306
+
 var connection = mysql.createConnection({
-    host: 'awseb-e-y9giweg2ci-stack-awsebrdsdatabase-znskistgmgix.cqdvk67uu8ru.us-east-2.rds.amazonaws.com',
-    user: 'ChenoChatRoot',
-    password: 'dvm1181997CHENOCHATDB',
+    host: '127.0.0.1',
+    user: 'root',
+    password: 'dvm1181997ChenoChat2024!',
     port: '3306'
 })
+
+
 
 // Predefined values
 let SELECT = 'SELECT'; 
@@ -222,3 +233,11 @@ function queryDB(query){
 module.exports={
     queryDB
 }
+
+// OLD AWS connection
+// var connection = mysql.createConnection({
+//     host: 'awseb-e-y9giweg2ci-stack-awsebrdsdatabase-znskistgmgix.cqdvk67uu8ru.us-east-2.rds.amazonaws.com',
+//     user: 'ChenoChatRoot',
+//     password: 'dvm1181997CHENOCHATDB',
+//     port: '3306'
+// })

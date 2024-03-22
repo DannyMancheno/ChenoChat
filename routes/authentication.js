@@ -26,6 +26,7 @@ let DELETE = 'DELETE';
 router.get('/login', (req, res)=>{
     res.send({response: 'login reached'});
 })
+
 router.post('/checkUsername', (req, res)=>{
     queryDB({
         statement: 'SELECT',
@@ -36,8 +37,15 @@ router.post('/checkUsername', (req, res)=>{
     })
 })
 
+router.post('/forgotpass', (req, res)=>{
+    
+})
+
 router.post('/register', (req, res)=>{
     let data = req.body;
+
+    
+
     if(data.recaptcha){
         const secretKey = '6Lc0b3MpAAAAAKpLa29yE1s0BmPHo4o8vD5QyoDR';
         const userResponse = data.recaptcha
@@ -59,11 +67,17 @@ router.post('/register', (req, res)=>{
                         table: 'UserAccount', 
                         condition: {username: data.username}
                     }).then(result=>{
-                        if(result.length) res.status(401).send('Darn, username is already in use :C');
+
+                        let nameTaken = ['Username is already in use', 'Username taken', 'Darn, username is already in use :C'];
+                        let nameSafe = ['Awesome, you created an account!', 'Congrats, you successfully registed', 'You did it! You registered!'];
+                        
+                        if(result.length) res.status(401).send(nameTaken[Math.floor(Math.random() * nameTaken.length)]);
                         else{
                             // Remove uneeded datacheckers for DB insert
                             delete data.confirm;
                             delete data.recaptcha;
+
+                            
                             queryDB({
                                 statement: INSERT,
                                 table: 'UserAccount',
@@ -73,7 +87,7 @@ router.post('/register', (req, res)=>{
                                     securityA: bcrypt.hashSync(data.securityA, 10)
                                 }
                             })
-                            .then(result => res.status(201).send('Awesome, you created an account!'))
+                            .then(result => res.status(201).send(nameSafe[Math.floor(Math.random() * nameSafe.length)]))
                             .catch(error => res.status(401).send('Oh oh, something wrong happened!'))  
                         }
                     }).catch(error => res.status(401).send('Database account registry check failed'));
